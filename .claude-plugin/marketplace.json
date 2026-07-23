@@ -1,0 +1,16 @@
+{
+  "name": "italo-standards",
+  "owner": {
+    "name": "Italo Monteiro Leite"
+  },
+  "plugins": [
+    {
+      "name": "eng-standards",
+      "source": "./plugins/eng-standards",
+      "description": "Padrões de engenharia de software em árvore EAP: skill mãe coordenando documentação, estruturação e patterns de código.",
+      "version": "1.0.0",
+      "category": "development",
+      "tags": ["code-standards", "clean-code", "solid", "arquitetura", "documentacao", "pt-br"]
+    }
+  ]
+}
