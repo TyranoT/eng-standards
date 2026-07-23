@@ -1,4 +1,4 @@
-# italo-standards — Marketplace de Plugins Claude Code
+# Italo-Standards — Marketplace de Plugins Claude Code
 
 Marketplace pessoal com padrões de engenharia de software.
 
