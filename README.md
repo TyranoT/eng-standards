@@ -6,7 +6,7 @@ Marketplace pessoal com padrões de engenharia de software.
 
 | Plugin | Descrição | Skills |
 |---|---|---|
-| `eng-standards` | Padrões de engenharia em árvore EAP | 6 |
+| `eng-standards` | Padrões de engenharia em árvore EAP | 7 |
 
 ## Instalação
 
@@ -34,7 +34,8 @@ Para atualizar depois de novos commits:
 ├── /eng-standards:code-docs       Documentação de código + documentos de projeto
 ├── /eng-standards:code-structure  Pastas, stacks e serviços
 ├── /eng-standards:code-patterns   SOLID, KISS, DRY, nomenclatura, POO, anti-patterns
-└── /eng-standards:code-review     Revisão de PR/branch/diff: erros, organização, patterns
+├── /eng-standards:code-review     Revisão de PR/branch/diff: erros, organização, patterns
+└── /eng-standards:code-architecture  Opções, trade-off, ADR, visões e diagramas Draw.io
 ```
 
 ### Como usar
@@ -57,6 +58,7 @@ A skill mãe decide quais filhas carregar conforme o pedido.
 | **Patterns** | SOLID, KISS, DRY, Clean Code, MVC/MVVM, nomenclatura, POO, regras absolutas, anti-patterns, gatilhos de refatoração — em biblioteca compartilhada, um arquivo por conceito |
 | **Verificação** | Varredura de design system instalado (Shadcn, MUI, Chakra), busca por componente de mesmo propósito, decisão de duplicata via pergunta ao usuário, detecção de documentação referenciada e de suíte E2E (Playwright, Cypress) |
 | **Review** | Caça a erros (null/async/limite/estado/recurso/concorrência) e falhas de segurança, aderência a camadas e estrutura, sugestões de enxugamento, 4 níveis de severidade e relatório com `arquivo:linha` |
+| **Arquitetura** | 14 modos (opções, cenários de atributos de qualidade, trade-off, camadas, fronteiras de componentes e integração, decomposição em serviços, monólito modular, runtime, implantação, escalabilidade, disponibilidade, riscos, ADR) + guia de estruturação de diagramas Draw.io, templates C4/AWS/sequência e validador `.drawio` — adaptado de [45ck/software-architecture-skills](https://github.com/45ck/software-architecture-skills) (MIT) |
 
 ## Estrutura do repositório
 
@@ -83,7 +85,12 @@ A skill mãe decide quais filhas carregar conforme o pedido.
 │           ├── code-docs/
 │           ├── code-structure/
 │           ├── code-patterns/    # Índice → aponta para references/patterns/
-│           └── code-review/      # Procedimento de revisão
+│           ├── code-review/      # Procedimento de revisão
+│           └── code-architecture/
+│               ├── SKILL.md
+│               ├── references/   # Templates dos artefatos + guia Draw.io
+│               ├── assets/       # Templates .drawio (C4, implantação AWS, sequência)
+│               └── scripts/      # validate-drawio.mjs
 └── README.md
 ```
 

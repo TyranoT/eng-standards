@@ -152,6 +152,10 @@ Este documento tem como finalidade [objetivo em uma frase].
 
 Templates prontos dos cinco documentos: `references/project-documents.md`
 
+> Diagramas de arquitetura (C4, implantação, sequência entre containers) e ADRs vêm da
+> `/eng-standards:code-architecture`, em Draw.io. O Documento de Arquitetura de Código incorpora os SVGs exportados
+> em vez de redesenhar. Mermaid continua valendo para ER, atividade e caso de uso dentro dos documentos.
+
 ---
 
 ## Checklist de documentação

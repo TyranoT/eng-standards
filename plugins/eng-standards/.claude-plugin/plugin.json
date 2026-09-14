@@ -1,7 +1,7 @@
 {
   "name": "eng-standards",
-  "version": "1.3.0",
-  "description": "Padrões de engenharia de software em árvore EAP. Uma skill mãe (code-standards) coordena cinco filhas: code-attention (varredura antes de criar e checkpoint de documentação e testes E2E antes de entregar), code-docs (documentação de código e documentos de projeto), code-structure (estrutura de pastas, stacks e serviços) code-patterns (SOLID, KISS, DRY, nomenclatura, POO, anti-patterns e refatoração) e code-review (procedimento de revisão de PR, branch ou diff, com caça a erros, severidade e formato de relatório). Aplicável a React, Next.js, Angular, Flutter, Node.js, NestJS, Express, FastAPI, Python, Java e Spring.",
+  "version": "1.4.0",
+  "description": "Padrões de engenharia de software em árvore EAP. Uma skill mãe (code-standards) coordena seis filhas: code-attention (varredura antes de criar e checkpoint de documentação e testes E2E antes de entregar), code-docs (documentação de código e documentos de projeto), code-structure (estrutura de pastas, stacks e serviços), code-patterns (SOLID, KISS, DRY, nomenclatura, POO, anti-patterns e refatoração), code-review (procedimento de revisão de PR, branch ou diff, com caça a erros, severidade e formato de relatório) e code-architecture (opções, trade-off, ADR, fronteiras, visões de runtime e implantação, riscos e diagramas Draw.io C4/AWS/sequência com validador). Aplicável a React, Next.js, Angular, Flutter, Node.js, NestJS, Express, FastAPI, Python, Java e Spring.",
   "author": {
     "name": "Italo Monteiro Leite"
   },
@@ -16,6 +16,10 @@
     "clean-code",
     "solid",
     "arquitetura",
+    "adr",
+    "c4",
+    "drawio",
+    "diagramas",
     "documentacao",
     "refatoracao",
     "typescript",

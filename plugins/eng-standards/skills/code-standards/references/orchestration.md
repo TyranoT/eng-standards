@@ -1,6 +1,6 @@
 # Orquestração — Combinando as Skills Filhas
 
-Guia de como as três filhas se combinam por tipo de tarefa real.
+Guia de como as filhas se combinam por tipo de tarefa real.
 
 ---
 
@@ -20,10 +20,11 @@ sem esse passo — ele é implícito na última linha de cada tabela.
 | Ordem | Skill | O que fazer |
 |---|---|---|
 | 1 | `/eng-standards:code-attention` | Confirmar com o usuário as dependências a instalar e se haverá suíte E2E desde o início — em projeto novo não há o que reaproveitar, mas há o que decidir |
-| 2 | `/eng-standards:code-structure` | Definir árvore de pastas (`features/` no front, `modules/` no back), escolher stack da lista padrão, listar serviços necessários |
-| 3 | `/eng-standards:code-docs` | Gerar Especificação Completa + Contrato de API **antes** de codar |
-| 4 | `/eng-standards:code-patterns` | Implementar respeitando SOLID/KISS/DRY, nomenclatura e regras absolutas |
-| 5 | `/eng-standards:code-docs` | Documentar funções exportadas + README |
+| 2 | `/eng-standards:code-architecture` | Opções + cenários de qualidade + trade-off → ADR do estilo (monólito modular, serviços); C4 Contexto e Containers em Draw.io |
+| 3 | `/eng-standards:code-structure` | Definir árvore de pastas (`features/` no front, `modules/` no back), escolher stack da lista padrão, listar serviços necessários |
+| 4 | `/eng-standards:code-docs` | Gerar Especificação Completa + Contrato de API **antes** de codar |
+| 5 | `/eng-standards:code-patterns` | Implementar respeitando SOLID/KISS/DRY, nomenclatura e regras absolutas |
+| 6 | `/eng-standards:code-docs` | Documentar funções exportadas + README; Documento de Arquitetura incorpora os SVGs da etapa 2 |
 
 > Exceção à ordem padrão: em projeto novo, o Contrato de API vem antes do código — ele guia frontend e backend simultaneamente.
 
@@ -91,8 +92,9 @@ Se duas filhas derem orientações conflitantes:
 
 1. **Regras absolutas** de `/eng-standards:code-patterns` vencem sempre
 2. **Bloqueio de `/eng-standards:code-attention` vence sobre pressa** — se há duplicata ou dependência a decidir, nada é escrito antes da resposta do usuário
-3. Estrutura de pastas de `/eng-standards:code-structure` vence sobre preferências pontuais
-4. Formato de documentação de `/eng-standards:code-docs` cede a padrões oficiais da linguagem quando houver divergência
+3. Decisão aceita em ADR da `/eng-standards:code-architecture` vence sobre preferência pontual — mudar exige novo ADR que a substitua
+4. Estrutura de pastas de `/eng-standards:code-structure` vence sobre preferências pontuais
+5. Formato de documentação de `/eng-standards:code-docs` cede a padrões oficiais da linguagem quando houver divergência
 
 ---
 
@@ -102,3 +104,19 @@ Se duas filhas derem orientações conflitantes:
 
 Carregue apenas `/eng-standards:code-attention`. Entregue o relatório de varredura em até 6 linhas
 e, se houver decisão pendente, faça a pergunta. Não escreva código nem documentação nesse caso.
+
+---
+
+## Cenário 7 — Decisão ou visão de arquitetura
+
+**Pedido típico:** "Monólito ou microsserviços?" / "Desenha a arquitetura desse projeto no draw.io"
+
+| Ordem | Skill | O que fazer |
+|---|---|---|
+| 1 | `/eng-standards:code-architecture` | Ler código e infra reais; rodar os modos que o pedido exige (ver tabela "Pedido → Modos" da skill) |
+| 2 | `/eng-standards:code-architecture` | Diagramas Draw.io a partir dos templates de `assets/`, validados com `scripts/validate-drawio.mjs` |
+| 3 | `/eng-standards:code-architecture` | ADR registrando a decisão — mudança estrutural sempre passa por **AskUserQuestion** antes |
+| 4 | `/eng-standards:code-structure` | Só se a decisão mudar pastas/módulos: materializar as novas fronteiras |
+| 5 | `/eng-standards:code-docs` | Atualizar o Documento de Arquitetura de Código incorporando os SVGs exportados |
+
+Pedido só de desenho ("gera o C4 desse projeto") para no passo 2 — não force ADR onde não há decisão.

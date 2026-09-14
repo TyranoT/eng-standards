@@ -3,12 +3,12 @@ name: code-standards
 description: >
   Skill MÃE de padrões de engenharia de software. SEMPRE consulte ao escrever, revisar, refatorar, documentar ou
   estruturar qualquer código ou projeto, em qualquer linguagem ou framework — React, Next.js, Angular, Flutter,
-  Node.js, NestJS, Express, FastAPI, Python, Java, Spring. Coordena cinco skills filhas: code-attention (varredura
+  Node.js, NestJS, Express, FastAPI, Python, Java, Spring. Coordena seis skills filhas: code-attention (varredura
   antes de criar e checkpoint antes de entregar), code-docs (documentação e documentos de projeto), code-structure
-  (estrutura de pastas, stacks e serviços), code-patterns (patterns, princípios e anti-patterns em código) e
-  code-review (procedimento de revisão de PR, branch ou diff). Use sempre que o usuário pedir para criar,
-  refatorar, revisar, documentar ou organizar código e projetos — mesmo que
-  não mencione "padrões", "arquitetura" ou "documentação".
+  (estrutura de pastas, stacks e serviços), code-patterns (patterns, princípios e anti-patterns em código),
+  code-review (procedimento de revisão de PR, branch ou diff) e code-architecture (decisões, ADR, visões e diagramas
+  de arquitetura em Draw.io). Use sempre que o usuário pedir para criar, refatorar, revisar, documentar, organizar ou
+  decidir a arquitetura de código e projetos — mesmo que não mencione "padrões", "arquitetura" ou "documentação".
 ---
 
 # Code Standards — Skill Mãe
@@ -49,10 +49,17 @@ description: >
 │       ├── 3.5 anti-patterns.md ..... Catálogo ❌ → ✅
 │       └── 3.6 refatoracao.md ....... Gatilhos + exemplos antes/depois
 │
-└── 4. code-review ....... Revisão de código (consome a biblioteca acima)
-    ├── 4.1 Escopo e caça a erros (correção, segurança, regressão)
-    ├── 4.2 Organização e enxugamento
-    └── 4.3 Severidade e formato do relatório
+├── 4. code-review ....... Revisão de código (consome a biblioteca acima)
+│   ├── 4.1 Escopo e caça a erros (correção, segurança, regressão)
+│   ├── 4.2 Organização e enxugamento
+│   └── 4.3 Severidade e formato do relatório
+│
+└── 5. code-architecture . Arquitetura (decisão antes da estrutura)
+    ├── 5.1 Opções, cenários de atributos de qualidade e trade-off
+    ├── 5.2 Fronteiras: camadas, componentes, integrações, serviços
+    ├── 5.3 Visões: runtime e implantação
+    ├── 5.4 Escalabilidade, disponibilidade, riscos e ADR
+    └── 5.5 Diagramas Draw.io (C4, implantação AWS, sequência) + validador
 ```
 
 > A biblioteca `${CLAUDE_PLUGIN_ROOT}/references/patterns/` é a **fonte única** dos conceitos de patterns e pode ser
@@ -72,23 +79,29 @@ description: >
 | "qual stack usar", "que lib para X", "qual serviço AWS" | `/eng-standards:code-structure` |
 | "refatora isso", "melhora essa função", "esse componente tá grande" | `/eng-standards:code-patterns` |
 | "revisa esse PR", "revisa essa branch", "olha esse diff", "tem bug aqui?" | `/eng-standards:code-review` |
+| "qual arquitetura usar", "monólito ou microsserviços", "compara essas opções" | `/eng-standards:code-architecture` |
+| "escreve um ADR", "diagrama de arquitetura", "desenha no draw.io", "visão de implantação" | `/eng-standards:code-architecture` |
 | "escreve o código de X" (qualquer feature nova) | `/eng-standards:code-attention` → `/eng-standards:code-structure` → `/eng-standards:code-patterns` |
-| "cria o projeto do zero" | **as quatro**, nesta ordem: attention → structure → patterns → docs |
+| "cria o projeto do zero" | nesta ordem: attention → architecture → structure → patterns → docs |
 | "revisa o que você acabou de fazer" | `/eng-standards:code-review` sobre o próprio diff |
 
 > Na dúvida, carregue as quatro primeiras. A `code-review` só entra quando o pedido é revisar algo já escrito.
+> A `code-architecture` entra quando há decisão estrutural a tomar (novo serviço, integração, mudança de
+> implantação) ou visão/diagrama de arquitetura a produzir.
 
 ---
 
 ## Ordem de execução (feature ou projeto novo)
 
 1. **`/eng-standards:code-attention`** — Gate de Entrada: o que já existe no projeto cobre isso?
-2. **`/eng-standards:code-structure`** — define pastas, stack e serviços antes de qualquer linha de código
-3. **`/eng-standards:code-patterns`** — escreve o código já dentro dos princípios
-4. **`/eng-standards:code-docs`** — documenta o que foi entregue
-5. **`/eng-standards:code-attention`** — Gate de Saída: documentação referenciada e teste E2E
+2. **`/eng-standards:code-architecture`** — só se houver decisão estrutural: opções, trade-off, ADR e diagramas
+3. **`/eng-standards:code-structure`** — define pastas, stack e serviços antes de qualquer linha de código
+4. **`/eng-standards:code-patterns`** — escreve o código já dentro dos princípios
+5. **`/eng-standards:code-docs`** — documenta o que foi entregue
+6. **`/eng-standards:code-attention`** — Gate de Saída: documentação referenciada e teste E2E
 
-Nunca inverta: documentar código mal estruturado é retrabalho, e criar o que já existe é dívida nova.
+Nunca inverta: documentar código mal estruturado é retrabalho, estruturar antes de decidir a arquitetura é
+apostar, e criar o que já existe é dívida nova.
 
 ---
 

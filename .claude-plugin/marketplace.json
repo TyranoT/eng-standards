@@ -7,10 +7,10 @@
     {
       "name": "eng-standards",
       "source": "./plugins/eng-standards",
-      "description": "Padrões de engenharia de software em árvore EAP: skill mãe coordenando verificação, documentação, estruturação, patterns e review de código.",
-      "version": "1.3.0",
+      "description": "Padrões de engenharia de software em árvore EAP: skill mãe coordenando verificação, documentação, estruturação, patterns, review de código e arquitetura com diagramas Draw.io.",
+      "version": "1.4.0",
       "category": "development",
-      "tags": ["code-standards", "clean-code", "solid", "arquitetura", "documentacao", "reuso", "e2e", "code-review", "pt-br"]
+      "tags": ["code-standards", "clean-code", "solid", "arquitetura", "adr", "c4", "drawio", "documentacao", "reuso", "e2e", "code-review", "pt-br"]
     }
   ]
 }
