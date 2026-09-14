@@ -53,6 +53,9 @@ Duas fontes de verdade divergem na primeira alteração e o bug aparece só em p
 2. **Melhorias** — anti-patterns desta lista e gatilhos de refatoração
 3. **Sugestões** — nomenclatura, organização, documentação
 
+O procedimento completo de review — escopo, caça a erros, severidade e formato do relatório — está em
+`/eng-standards:code-review`. Esta seção é só o resumo da classificação.
+
 ---
 
 ## Relacionados

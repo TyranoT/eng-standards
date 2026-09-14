@@ -38,6 +38,7 @@ Baseada em **features + shared + store**.
 │       ├── constants/    # Valores constantes
 │       ├── components/   # Frações de UI compostas ou reaproveitadas
 │       ├── ui/           # Telas da feature
+|       ├── tests/         # Testes unitários e E2E
 │       ├── schema.ts     # Schema Zod para validação
 │       ├── type.ts       # Tipagens e z.infer
 │       └── index.ts      # Barrel export da feature

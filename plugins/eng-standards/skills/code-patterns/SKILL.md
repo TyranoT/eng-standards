@@ -1,12 +1,13 @@
 ---
 name: code-patterns
 description: >
-  Princípios, patterns e anti-patterns em código. Skill filha de code-standards. Use ao escrever, revisar ou
+  Princípios, patterns e anti-patterns em código. Skill filha de code-standards. Use ao escrever ou
   refatorar qualquer código em qualquer linguagem — React, Next.js, Angular, Flutter, Node.js, NestJS, Express,
   FastAPI, Python, Java, Spring. Cobre SOLID, KISS, DRY, Clean Code, MVC/MVVM, nomenclatura, uso de POO, regras
   absolutas (sem IIFE em JSX, sem funções multi-propósito, sem comentário inline), anti-patterns e gatilhos de
-  refatoração. Gatilhos: "refatora isso", "revisa esse código", "melhora essa função", "escreve o código de X",
-  "esse componente tá grande", "como nomear isso", "aplica SOLID".
+  refatoração. Gatilhos: "refatora isso", "melhora essa função", "escreve o código de X", "esse componente tá
+  grande", "como nomear isso", "aplica SOLID". Para revisar PR, branch ou diff, a skill é code-review — esta aqui
+  fornece os conceitos que aquele review aplica.
 ---
 
 # Code Patterns — Índice dos Princípios e Patterns
@@ -34,10 +35,10 @@ Detalhes, exemplos e a única exceção legítima ao item 3:
 | Pedido / situação | Carregue de `references/patterns/` |
 |---|---|
 | "aplica SOLID", discussão de arquitetura, justificar separação | `principios-solid.md` |
-| Gerar código novo, aprovar ou bloquear review | `regras-absolutas.md` |
+| Gerar código novo | `regras-absolutas.md` |
 | "como nomear isso", criar variável/função/arquivo/pasta | `nomenclatura.md` |
 | Modelar entidade, decidir classe vs. função | `poo.md` |
-| "revisa esse código", "revisa esse PR" | `anti-patterns.md` |
+| Fechar entrega, checar o próprio código | `anti-patterns.md` |
 | "refatora isso", "esse componente tá grande" | `refatoracao.md` |
 
 Índice completo, combinações usuais e como citar de outras skills:
@@ -52,7 +53,7 @@ Detalhes, exemplos e a única exceção legítima ao item 3:
 | Tarefa | Arquivos |
 |---|---|
 | Escrever código novo | `regras-absolutas.md` + `nomenclatura.md` |
-| Revisar PR | `anti-patterns.md` + `regras-absolutas.md` |
+| Revisar PR (via `/eng-standards:code-review`) | `anti-patterns.md` + `regras-absolutas.md` |
 | Refatorar | `refatoracao.md` + `principios-solid.md` |
 | Modelar domínio | `poo.md` + `principios-solid.md` |
 
@@ -77,6 +78,7 @@ Se qualquer item falhar, corrija **antes** de entregar — refatoração não é
 
 ## Skills irmãs
 
+- `/eng-standards:code-review` — procedimento de revisão de PR/branch/diff, que aplica estes conceitos
 - `/eng-standards:code-structure` — onde o arquivo deve morar, stack e serviços
 - `/eng-standards:code-docs` — documentação de código e documentos de projeto
-- `/eng-standards:code-standards` — skill mãe, roteamento entre as três
+- `/eng-standards:code-standards` — skill mãe, roteamento entre as filhas

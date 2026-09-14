@@ -3,10 +3,11 @@ name: code-standards
 description: >
   Skill MÃE de padrões de engenharia de software. SEMPRE consulte ao escrever, revisar, refatorar, documentar ou
   estruturar qualquer código ou projeto, em qualquer linguagem ou framework — React, Next.js, Angular, Flutter,
-  Node.js, NestJS, Express, FastAPI, Python, Java, Spring. Coordena quatro skills filhas: code-attention (varredura
+  Node.js, NestJS, Express, FastAPI, Python, Java, Spring. Coordena cinco skills filhas: code-attention (varredura
   antes de criar e checkpoint antes de entregar), code-docs (documentação e documentos de projeto), code-structure
-  (estrutura de pastas, stacks e serviços) e code-patterns (patterns, princípios e anti-patterns em código). Use
-  sempre que o usuário pedir para criar, refatorar, revisar, documentar ou organizar código e projetos — mesmo que
+  (estrutura de pastas, stacks e serviços), code-patterns (patterns, princípios e anti-patterns em código) e
+  code-review (procedimento de revisão de PR, branch ou diff). Use sempre que o usuário pedir para criar,
+  refatorar, revisar, documentar ou organizar código e projetos — mesmo que
   não mencione "padrões", "arquitetura" ou "documentação".
 ---
 
@@ -39,14 +40,19 @@ description: >
 │   ├── 2.4 Stacks padrão (frontend, backend, infra)
 │   └── 2.5 Serviços de nuvem e terceiros
 │
-└── 3. code-patterns ..... Aplicação de Patterns (índice)
-    └── references/patterns/ ... Biblioteca compartilhada de conceitos
-        ├── 3.1 principios-solid.md .. SOLID, KISS, DRY, Clean Code, MVC/MVVM
-        ├── 3.2 nomenclatura.md ...... Variáveis, funções, arquivos, verbos padrão
-        ├── 3.3 poo.md ............... Classe vs. função pura
-        ├── 3.4 regras-absolutas.md .. O que nunca pode ser violado
-        ├── 3.5 anti-patterns.md ..... Catálogo ❌ → ✅
-        └── 3.6 refatoracao.md ....... Gatilhos + exemplos antes/depois
+├── 3. code-patterns ..... Aplicação de Patterns (índice)
+│   └── references/patterns/ ... Biblioteca compartilhada de conceitos
+│       ├── 3.1 principios-solid.md .. SOLID, KISS, DRY, Clean Code, MVC/MVVM
+│       ├── 3.2 nomenclatura.md ...... Variáveis, funções, arquivos, verbos padrão
+│       ├── 3.3 poo.md ............... Classe vs. função pura
+│       ├── 3.4 regras-absolutas.md .. O que nunca pode ser violado
+│       ├── 3.5 anti-patterns.md ..... Catálogo ❌ → ✅
+│       └── 3.6 refatoracao.md ....... Gatilhos + exemplos antes/depois
+│
+└── 4. code-review ....... Revisão de código (consome a biblioteca acima)
+    ├── 4.1 Escopo e caça a erros (correção, segurança, regressão)
+    ├── 4.2 Organização e enxugamento
+    └── 4.3 Severidade e formato do relatório
 ```
 
 > A biblioteca `${CLAUDE_PLUGIN_ROOT}/references/patterns/` é a **fonte única** dos conceitos de patterns e pode ser
@@ -64,11 +70,13 @@ description: >
 | "cria o documento de especificação", "contrato de API", "plano de ação" | `/eng-standards:code-docs` |
 | "monta o projeto", "onde coloco esse arquivo", "estrutura de pastas" | `/eng-standards:code-structure` |
 | "qual stack usar", "que lib para X", "qual serviço AWS" | `/eng-standards:code-structure` |
-| "refatora isso", "revisa esse código", "melhora essa função" | `/eng-standards:code-patterns` |
+| "refatora isso", "melhora essa função", "esse componente tá grande" | `/eng-standards:code-patterns` |
+| "revisa esse PR", "revisa essa branch", "olha esse diff", "tem bug aqui?" | `/eng-standards:code-review` |
 | "escreve o código de X" (qualquer feature nova) | `/eng-standards:code-attention` → `/eng-standards:code-structure` → `/eng-standards:code-patterns` |
 | "cria o projeto do zero" | **as quatro**, nesta ordem: attention → structure → patterns → docs |
+| "revisa o que você acabou de fazer" | `/eng-standards:code-review` sobre o próprio diff |
 
-> Na dúvida, carregue as quatro. É barato e evita entregar código fora do padrão.
+> Na dúvida, carregue as quatro primeiras. A `code-review` só entra quando o pedido é revisar algo já escrito.
 
 ---
 
@@ -126,6 +134,9 @@ A revisão responde duas perguntas:
 Se a revisão encontrar qualquer impacto colateral, **corrija ou sinalize explicitamente antes de encerrar** — nunca
 entregue assumindo que "provavelmente não afetou nada". Ao final, relate em uma linha o que mudou e o que foi
 verificado como não afetado.
+
+> Para entrega grande ou com risco de regressão, conduza este passo com `/eng-standards:code-review` aplicada ao
+> próprio diff — é o mesmo procedimento, com severidade e formato de relatório já definidos.
 
 ---
 

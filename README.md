@@ -6,7 +6,7 @@ Marketplace pessoal com padrões de engenharia de software.
 
 | Plugin | Descrição | Skills |
 |---|---|---|
-| `eng-standards` | Padrões de engenharia em árvore EAP | 5 |
+| `eng-standards` | Padrões de engenharia em árvore EAP | 6 |
 
 ## Instalação
 
@@ -33,7 +33,8 @@ Para atualizar depois de novos commits:
 ├── /eng-standards:code-attention  Varredura antes de criar + checkpoint antes de entregar
 ├── /eng-standards:code-docs       Documentação de código + documentos de projeto
 ├── /eng-standards:code-structure  Pastas, stacks e serviços
-└── /eng-standards:code-patterns   SOLID, KISS, DRY, nomenclatura, POO, anti-patterns
+├── /eng-standards:code-patterns   SOLID, KISS, DRY, nomenclatura, POO, anti-patterns
+└── /eng-standards:code-review     Revisão de PR/branch/diff: erros, organização, patterns
 ```
 
 ### Como usar
@@ -55,6 +56,7 @@ A skill mãe decide quais filhas carregar conforme o pedido.
 | **Estruturação** | Frontend (features + shared + store), Backend (modules com controller/service/repository), Flutter, FastAPI, Spring, stacks padrão, serviços AWS |
 | **Patterns** | SOLID, KISS, DRY, Clean Code, MVC/MVVM, nomenclatura, POO, regras absolutas, anti-patterns, gatilhos de refatoração — em biblioteca compartilhada, um arquivo por conceito |
 | **Verificação** | Varredura de design system instalado (Shadcn, MUI, Chakra), busca por componente de mesmo propósito, decisão de duplicata via pergunta ao usuário, detecção de documentação referenciada e de suíte E2E (Playwright, Cypress) |
+| **Review** | Caça a erros (null/async/limite/estado/recurso/concorrência) e falhas de segurança, aderência a camadas e estrutura, sugestões de enxugamento, 4 níveis de severidade e relatório com `arquivo:linha` |
 
 ## Estrutura do repositório
 
@@ -80,7 +82,8 @@ A skill mãe decide quais filhas carregar conforme o pedido.
 │           ├── code-attention/   # Gate de entrada e de saída
 │           ├── code-docs/
 │           ├── code-structure/
-│           └── code-patterns/    # Índice → aponta para references/patterns/
+│           ├── code-patterns/    # Índice → aponta para references/patterns/
+│           └── code-review/      # Procedimento de revisão
 └── README.md
 ```
 

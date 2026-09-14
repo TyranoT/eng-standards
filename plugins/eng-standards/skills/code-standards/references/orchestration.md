@@ -61,15 +61,18 @@ sem esse passo — ele é implícito na última linha de cada tabela.
 
 **Pedido típico:** "Revisa esse PR"
 
-Carregue `/eng-standards:code-patterns` como principal. Use `/eng-standards:code-structure` para validar se os arquivos estão no lugar certo,
-`/eng-standards:code-docs` para verificar cobertura de documentação nas funções exportadas e `/eng-standards:code-attention`
-para checar se o PR criou algo que já existia no projeto e se deixou documentação ou E2E para trás.
+Carregue `/eng-standards:code-review` — ela é a dona do procedimento (escopo, caça a erros, severidade e formato
+do relatório) e puxa as demais conforme o diff exigir:
 
-Formato do review:
-1. **Bloqueadores** — violações de regras absolutas e código novo que duplica algo existente
-2. **Melhorias** — anti-patterns e oportunidades de refatoração
-3. **Sugestões** — nomenclatura, organização, documentação
-4. **Pendências de entrega** — documentação desatualizada e cobertura E2E ausente
+| Passo do review | Skill consultada |
+|---|---|
+| Caça a erros, severidade, relatório | `/eng-standards:code-review` (conduz) |
+| Conceito ferido em cada achado | `${CLAUDE_PLUGIN_ROOT}/references/patterns/` via `/eng-standards:code-patterns` |
+| Arquivo no lugar certo, camadas respeitadas | `/eng-standards:code-structure` |
+| Duplicata introduzida pelo PR, pendência de doc e E2E | `/eng-standards:code-attention` |
+| Cobertura de documentação nas funções exportadas | `/eng-standards:code-docs` |
+
+Saída em 4 níveis de severidade: 🔴 Bloqueador · 🟡 Melhoria · 🔵 Sugestão · ⚪ Nota.
 
 ---
 
