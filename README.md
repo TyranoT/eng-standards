@@ -6,7 +6,7 @@ Marketplace pessoal com padrões de engenharia de software.
 
 | Plugin | Descrição | Skills |
 |---|---|---|
-| `eng-standards` | Padrões de engenharia em árvore EAP | 4 |
+| `eng-standards` | Padrões de engenharia em árvore EAP | 5 |
 
 ## Instalação
 
@@ -30,6 +30,7 @@ Para atualizar depois de novos commits:
 
 ```
 /eng-standards:code-standards      MÃE — roteamento e contrato mínimo
+├── /eng-standards:code-attention  Varredura antes de criar + checkpoint antes de entregar
 ├── /eng-standards:code-docs       Documentação de código + documentos de projeto
 ├── /eng-standards:code-structure  Pastas, stacks e serviços
 └── /eng-standards:code-patterns   SOLID, KISS, DRY, nomenclatura, POO, anti-patterns
@@ -52,7 +53,8 @@ A skill mãe decide quais filhas carregar conforme o pedido.
 |---|---|
 | **Documentação** | JSDoc/TSDoc, Docstrings Python, Javadoc, DartDoc, README + templates dos 5 documentos essenciais (Especificação, Arquitetura, Fluxo UML, Plano de Ação, Contrato de API) |
 | **Estruturação** | Frontend (features + shared + store), Backend (modules com controller/service/repository), Flutter, FastAPI, Spring, stacks padrão, serviços AWS |
-| **Patterns** | SOLID, KISS, DRY, Clean Code, MVC/MVVM, nomenclatura, POO, regras absolutas, anti-patterns, gatilhos de refatoração |
+| **Patterns** | SOLID, KISS, DRY, Clean Code, MVC/MVVM, nomenclatura, POO, regras absolutas, anti-patterns, gatilhos de refatoração — em biblioteca compartilhada, um arquivo por conceito |
+| **Verificação** | Varredura de design system instalado (Shadcn, MUI, Chakra), busca por componente de mesmo propósito, decisão de duplicata via pergunta ao usuário, detecção de documentação referenciada e de suíte E2E (Playwright, Cypress) |
 
 ## Estrutura do repositório
 
@@ -64,12 +66,48 @@ A skill mãe decide quais filhas carregar conforme o pedido.
 │   └── eng-standards/
 │       ├── .claude-plugin/
 │       │   └── plugin.json       # Manifesto do plugin
+│       ├── references/
+│       │   └── patterns/         # Biblioteca compartilhada de conceitos
+│       │       ├── README.md             # Índice: qual arquivo ler pra quê
+│       │       ├── principios-solid.md
+│       │       ├── regras-absolutas.md
+│       │       ├── nomenclatura.md
+│       │       ├── poo.md
+│       │       ├── anti-patterns.md
+│       │       └── refatoracao.md
 │       └── skills/
 │           ├── code-standards/   # Skill mãe
+│           ├── code-attention/   # Gate de entrada e de saída
 │           ├── code-docs/
 │           ├── code-structure/
-│           └── code-patterns/
+│           └── code-patterns/    # Índice → aponta para references/patterns/
 └── README.md
+```
+
+### Biblioteca de patterns compartilhada
+
+Os conceitos de patterns ficam em arquivos autônomos, fora das skills, para poderem ser citados como
+referência por **qualquer skill** — inclusive skills de outros plugins ou projetos.
+
+| Arquivo | Leia quando |
+|---|---|
+| `principios-solid.md` | Precisa justificar ou decidir uma separação de responsabilidade |
+| `regras-absolutas.md` | Vai gerar código novo ou aprovar/bloquear um review |
+| `nomenclatura.md` | Vai nomear variável, função, classe, arquivo ou pasta |
+| `poo.md` | Está modelando entidade com estado ou comportamento |
+| `anti-patterns.md` | Está revisando código ou fechando uma entrega |
+| `refatoracao.md` | Encontrou código que precisa melhorar |
+
+Para citar de dentro deste plugin:
+
+```markdown
+Leia `${CLAUDE_PLUGIN_ROOT}/references/patterns/nomenclatura.md`
+```
+
+De uma skill fora do plugin, use o caminho instalado:
+
+```
+~/.claude/plugins/eng-standards/references/patterns/<arquivo>.md
 ```
 
 ## Publicando

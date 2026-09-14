@@ -10,10 +10,11 @@ Guia de como as três filhas se combinam por tipo de tarefa real.
 
 | Ordem | Skill | O que fazer |
 |---|---|---|
-| 1 | `/eng-standards:code-structure` | Definir árvore de pastas (`features/` no front, `modules/` no back), escolher stack da lista padrão, listar serviços necessários |
-| 2 | `/eng-standards:code-docs` | Gerar Especificação Completa + Contrato de API **antes** de codar |
-| 3 | `/eng-standards:code-patterns` | Implementar respeitando SOLID/KISS/DRY, nomenclatura e regras absolutas |
-| 4 | `/eng-standards:code-docs` | Documentar funções exportadas + README |
+| 1 | `/eng-standards:code-attention` | Confirmar com o usuário as dependências a instalar e se haverá suíte E2E desde o início — em projeto novo não há o que reaproveitar, mas há o que decidir |
+| 2 | `/eng-standards:code-structure` | Definir árvore de pastas (`features/` no front, `modules/` no back), escolher stack da lista padrão, listar serviços necessários |
+| 3 | `/eng-standards:code-docs` | Gerar Especificação Completa + Contrato de API **antes** de codar |
+| 4 | `/eng-standards:code-patterns` | Implementar respeitando SOLID/KISS/DRY, nomenclatura e regras absolutas |
+| 5 | `/eng-standards:code-docs` | Documentar funções exportadas + README |
 
 > Exceção à ordem padrão: em projeto novo, o Contrato de API vem antes do código — ele guia frontend e backend simultaneamente.
 
@@ -25,9 +26,11 @@ Guia de como as três filhas se combinam por tipo de tarefa real.
 
 | Ordem | Skill | O que fazer |
 |---|---|---|
-| 1 | `/eng-standards:code-structure` | Criar `features/relatorios/` com `api/`, `hooks/`, `helpers/`, `constants/`, `components/`, `ui/`, `schema.ts`, `type.ts`, `index.ts` |
-| 2 | `/eng-standards:code-patterns` | Um hook por responsabilidade, UI separada da lógica |
-| 3 | `/eng-standards:code-docs` | JSDoc nas funções exportadas + atualizar Contrato de API se houver rota nova |
+| 1 | `/eng-standards:code-attention` | **Gate de Entrada** — checar design system instalado, componentes com o mesmo propósito, docs que citam o alvo e suíte E2E. Perguntar se houver duplicata |
+| 2 | `/eng-standards:code-structure` | Criar `features/relatorios/` com `api/`, `hooks/`, `helpers/`, `constants/`, `components/`, `ui/`, `schema.ts`, `type.ts`, `index.ts` |
+| 3 | `/eng-standards:code-patterns` | Um hook por responsabilidade, UI separada da lógica |
+| 4 | `/eng-standards:code-docs` | JSDoc nas funções exportadas + atualizar Contrato de API se houver rota nova |
+| 5 | `/eng-standards:code-attention` | **Gate de Saída** — perguntar sobre documentação referenciada e teste E2E |
 
 ---
 
@@ -37,9 +40,11 @@ Guia de como as três filhas se combinam por tipo de tarefa real.
 
 | Ordem | Skill | O que fazer |
 |---|---|---|
-| 1 | `/eng-standards:code-patterns` | Identificar gatilhos de refatoração, aplicar SRP, extrair duplicação |
-| 2 | `/eng-standards:code-structure` | Realocar arquivos extraídos para a pasta correta da feature |
-| 3 | `/eng-standards:code-docs` | Documentar as novas funções/componentes criados |
+| 1 | `/eng-standards:code-attention` | Antes de extrair, checar se o pedaço extraído já existe em `shared/` — extrair para um arquivo novo o que já era global é criar duplicata |
+| 2 | `/eng-standards:code-patterns` | Identificar gatilhos de refatoração, aplicar SRP, extrair duplicação |
+| 3 | `/eng-standards:code-structure` | Realocar arquivos extraídos para a pasta correta da feature |
+| 4 | `/eng-standards:code-docs` | Documentar as novas funções/componentes criados |
+| 5 | `/eng-standards:code-attention` | Gate de Saída — a refatoração mudou algo documentado? há E2E cobrindo o comportamento mantido? |
 
 ---
 
@@ -47,13 +52,15 @@ Guia de como as três filhas se combinam por tipo de tarefa real.
 
 **Pedido típico:** "Revisa esse PR"
 
-Carregue `/eng-standards:code-patterns` como principal. Use `/eng-standards:code-structure` para validar se os arquivos estão no lugar certo e
-`/eng-standards:code-docs` para verificar cobertura de documentação nas funções exportadas.
+Carregue `/eng-standards:code-patterns` como principal. Use `/eng-standards:code-structure` para validar se os arquivos estão no lugar certo,
+`/eng-standards:code-docs` para verificar cobertura de documentação nas funções exportadas e `/eng-standards:code-attention`
+para checar se o PR criou algo que já existia no projeto e se deixou documentação ou E2E para trás.
 
 Formato do review:
-1. **Bloqueadores** — violações de regras absolutas
+1. **Bloqueadores** — violações de regras absolutas e código novo que duplica algo existente
 2. **Melhorias** — anti-patterns e oportunidades de refatoração
 3. **Sugestões** — nomenclatura, organização, documentação
+4. **Pendências de entrega** — documentação desatualizada e cobertura E2E ausente
 
 ---
 
@@ -71,5 +78,15 @@ que o documento descreva a estrutura correta.
 Se duas filhas derem orientações conflitantes:
 
 1. **Regras absolutas** de `/eng-standards:code-patterns` vencem sempre
-2. Estrutura de pastas de `/eng-standards:code-structure` vence sobre preferências pontuais
-3. Formato de documentação de `/eng-standards:code-docs` cede a padrões oficiais da linguagem quando houver divergência
+2. **Bloqueio de `/eng-standards:code-attention` vence sobre pressa** — se há duplicata ou dependência a decidir, nada é escrito antes da resposta do usuário
+3. Estrutura de pastas de `/eng-standards:code-structure` vence sobre preferências pontuais
+4. Formato de documentação de `/eng-standards:code-docs` cede a padrões oficiais da linguagem quando houver divergência
+
+---
+
+## Cenário 6 — Só verificação
+
+**Pedido típico:** "Já existe um componente de tabela nesse projeto?" / "Pode commitar?"
+
+Carregue apenas `/eng-standards:code-attention`. Entregue o relatório de varredura em até 6 linhas
+e, se houver decisão pendente, faça a pergunta. Não escreva código nem documentação nesse caso.

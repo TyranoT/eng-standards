@@ -3,10 +3,11 @@ name: code-standards
 description: >
   Skill MÃE de padrões de engenharia de software. SEMPRE consulte ao escrever, revisar, refatorar, documentar ou
   estruturar qualquer código ou projeto, em qualquer linguagem ou framework — React, Next.js, Angular, Flutter,
-  Node.js, NestJS, Express, FastAPI, Python, Java, Spring. Coordena três skills filhas: code-docs (documentação e
-  documentos de projeto), code-structure (estrutura de pastas, stacks e serviços) e code-patterns (patterns,
-  princípios e anti-patterns em código). Use sempre que o usuário pedir para criar, refatorar, revisar, documentar
-  ou organizar código e projetos — mesmo que não mencione "padrões", "arquitetura" ou "documentação".
+  Node.js, NestJS, Express, FastAPI, Python, Java, Spring. Coordena quatro skills filhas: code-attention (varredura
+  antes de criar e checkpoint antes de entregar), code-docs (documentação e documentos de projeto), code-structure
+  (estrutura de pastas, stacks e serviços) e code-patterns (patterns, princípios e anti-patterns em código). Use
+  sempre que o usuário pedir para criar, refatorar, revisar, documentar ou organizar código e projetos — mesmo que
+  não mencione "padrões", "arquitetura" ou "documentação".
 ---
 
 # Code Standards — Skill Mãe
@@ -21,6 +22,11 @@ description: >
 ```
 /eng-standards:code-standards (MÃE — orquestração)
 │
+├── 0. code-attention .... Verificação (transversal — roda antes e depois das outras)
+│   ├── 0.1 Gate de Entrada — varredura de deps, design system e mesmo propósito
+│   ├── 0.2 Decisão de duplicata — sempre pergunta ao usuário
+│   └── 0.3 Gate de Saída — docs referenciadas e testes E2E
+│
 ├── 1. code-docs ......... Documentação
 │   ├── 1.1 Documentação de código (JSDoc, Docstring, Javadoc, DartDoc)
 │   ├── 1.2 Documentos de projeto (Specs, Arquitetura, Fluxo, Plano de Ação, Contrato de API)
@@ -33,13 +39,18 @@ description: >
 │   ├── 2.4 Stacks padrão (frontend, backend, infra)
 │   └── 2.5 Serviços de nuvem e terceiros
 │
-└── 3. code-patterns ..... Aplicação de Patterns
-    ├── 3.1 Princípios (SOLID, KISS, DRY, Clean Code, MVC/MVVM)
-    ├── 3.2 Nomenclatura
-    ├── 3.3 POO — quando e como
-    ├── 3.4 Regras absolutas e anti-patterns
-    └── 3.5 Refatoração
+└── 3. code-patterns ..... Aplicação de Patterns (índice)
+    └── references/patterns/ ... Biblioteca compartilhada de conceitos
+        ├── 3.1 principios-solid.md .. SOLID, KISS, DRY, Clean Code, MVC/MVVM
+        ├── 3.2 nomenclatura.md ...... Variáveis, funções, arquivos, verbos padrão
+        ├── 3.3 poo.md ............... Classe vs. função pura
+        ├── 3.4 regras-absolutas.md .. O que nunca pode ser violado
+        ├── 3.5 anti-patterns.md ..... Catálogo ❌ → ✅
+        └── 3.6 refatoracao.md ....... Gatilhos + exemplos antes/depois
 ```
+
+> A biblioteca `${CLAUDE_PLUGIN_ROOT}/references/patterns/` é a **fonte única** dos conceitos de patterns e pode ser
+> citada diretamente por qualquer skill, dentro ou fora deste plugin — ver `references/patterns/README.md`.
 
 ---
 
@@ -47,25 +58,29 @@ description: >
 
 | Pedido do usuário | Carregue |
 |---|---|
+| "cria um componente/hook/serviço", "adiciona um modal", "instala a lib X" | `/eng-standards:code-attention` **primeiro** |
+| "já existe algo pra isso?", "isso não vai duplicar?", "pode commitar" | `/eng-standards:code-attention` |
 | "documenta essa função", "escreve o JSDoc", "cria o README" | `/eng-standards:code-docs` |
 | "cria o documento de especificação", "contrato de API", "plano de ação" | `/eng-standards:code-docs` |
 | "monta o projeto", "onde coloco esse arquivo", "estrutura de pastas" | `/eng-standards:code-structure` |
 | "qual stack usar", "que lib para X", "qual serviço AWS" | `/eng-standards:code-structure` |
 | "refatora isso", "revisa esse código", "melhora essa função" | `/eng-standards:code-patterns` |
-| "escreve o código de X" (qualquer feature nova) | `/eng-standards:code-patterns` + `/eng-standards:code-structure` |
-| "cria o projeto do zero" | **as três**, nesta ordem: structure → patterns → docs |
+| "escreve o código de X" (qualquer feature nova) | `/eng-standards:code-attention` → `/eng-standards:code-structure` → `/eng-standards:code-patterns` |
+| "cria o projeto do zero" | **as quatro**, nesta ordem: attention → structure → patterns → docs |
 
-> Na dúvida, carregue as três. É barato e evita entregar código fora do padrão.
+> Na dúvida, carregue as quatro. É barato e evita entregar código fora do padrão.
 
 ---
 
-## Ordem de execução (projeto novo)
+## Ordem de execução (feature ou projeto novo)
 
-1. **`/eng-standards:code-structure`** — define pastas, stack e serviços antes de qualquer linha de código
-2. **`/eng-standards:code-patterns`** — escreve o código já dentro dos princípios
-3. **`/eng-standards:code-docs`** — documenta o que foi entregue
+1. **`/eng-standards:code-attention`** — Gate de Entrada: o que já existe no projeto cobre isso?
+2. **`/eng-standards:code-structure`** — define pastas, stack e serviços antes de qualquer linha de código
+3. **`/eng-standards:code-patterns`** — escreve o código já dentro dos princípios
+4. **`/eng-standards:code-docs`** — documenta o que foi entregue
+5. **`/eng-standards:code-attention`** — Gate de Saída: documentação referenciada e teste E2E
 
-Nunca inverta: documentar código mal estruturado é retrabalho.
+Nunca inverta: documentar código mal estruturado é retrabalho, e criar o que já existe é dívida nova.
 
 ---
 
@@ -73,6 +88,8 @@ Nunca inverta: documentar código mal estruturado é retrabalho.
 
 Independentemente da filha carregada, todo código entregue respeita:
 
+- [ ] Nada foi criado sem antes checar se já existia no projeto
+- [ ] Nenhuma duplicata foi resolvida sem a escolha do usuário
 - [ ] Uma responsabilidade por função, arquivo e módulo
 - [ ] Nomes autoexplicativos — sem abreviações, sem magic numbers
 - [ ] Zero comentário inline explicando "o que o código faz"
@@ -96,3 +113,4 @@ organizado, simples e prático de executar.
 ## Referências desta skill
 
 - `references/orchestration.md` — Como as filhas se combinam por tipo de tarefa, com exemplos
+- `${CLAUDE_PLUGIN_ROOT}/references/patterns/README.md` — Índice da biblioteca compartilhada de patterns
