@@ -4,6 +4,15 @@ Guia de como as três filhas se combinam por tipo de tarefa real.
 
 ---
 
+## Passo final universal — Revisão de encerramento
+
+Todo cenário abaixo termina com a **Revisão de encerramento** descrita na skill mãe (`SKILL.md`): reler o próprio
+diff, confirmar o Contrato mínimo e mapear se a mudança interferiu em outras partes do código (quem consome o que foi
+alterado, imports/exports, tipos, contratos de API, efeitos colaterais). Nenhuma atividade é considerada concluída
+sem esse passo — ele é implícito na última linha de cada tabela.
+
+---
+
 ## Cenário 1 — Projeto novo do zero
 
 **Pedido típico:** "Cria um sistema de gestão de usuários com Next.js e Express"

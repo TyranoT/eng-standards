@@ -97,8 +97,35 @@ Independentemente da filha carregada, todo código entregue respeita:
 - [ ] Código duplicado extraído
 - [ ] Arquivo no lugar certo da estrutura de features/modules
 - [ ] SOLID, KISS, DRY e Clean Code respeitados
+- [ ] Revisão de encerramento executada (ver seção abaixo)
 
 Se qualquer item falhar, corrija **antes** de entregar — refatoração não é opcional nem precisa ser pedida.
+
+---
+
+## Revisão de encerramento (obrigatória)
+
+Ao **encerrar qualquer atividade ou processo** — feature, refatoração, correção, documentação ou ajuste pontual —
+faça uma revisão final **antes** de considerar a tarefa concluída. Isso vale para toda entrega, mesmo as pequenas,
+e não precisa ser pedido pelo usuário.
+
+A revisão responde duas perguntas:
+
+**1. O que foi feito está correto e dentro do padrão?**
+- [ ] Reler o próprio diff do início ao fim, arquivo por arquivo
+- [ ] Confirmar que o Contrato mínimo foi cumprido em tudo que foi tocado
+- [ ] Garantir que não sobrou código morto, `console.log`, TODO esquecido ou trecho comentado
+
+**2. Isso interferiu em alguma outra parte do código?**
+- [ ] Mapear tudo que **consome** o que foi alterado (funções, componentes, rotas, tipos, contratos de API)
+- [ ] Verificar se assinaturas, tipos, retornos ou comportamentos mudaram e quebram quem depende deles
+- [ ] Conferir imports/exports, nomes renomeados e arquivos movidos em **todos** os pontos que os referenciam
+- [ ] Validar efeitos colaterais: estado compartilhado, side effects, migrações, variáveis de ambiente, configs
+- [ ] Rodar (ou pedir para rodar) build, lint e testes afetados quando existirem
+
+Se a revisão encontrar qualquer impacto colateral, **corrija ou sinalize explicitamente antes de encerrar** — nunca
+entregue assumindo que "provavelmente não afetou nada". Ao final, relate em uma linha o que mudou e o que foi
+verificado como não afetado.
 
 ---
 
