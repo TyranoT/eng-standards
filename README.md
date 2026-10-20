@@ -12,7 +12,7 @@ Marketplace pessoal com padrões de engenharia de software.
 
 ```bash
 # 1. Adicionar o marketplace
-/plugin marketplace add SEU_USUARIO/SEU_REPOSITORIO
+/plugin marketplace add TyranoT/eng-standards
 
 # 2. Instalar o plugin
 /plugin install eng-standards@italo-standards
